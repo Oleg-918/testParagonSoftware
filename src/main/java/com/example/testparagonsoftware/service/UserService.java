@@ -2,6 +2,7 @@ package com.example.testparagonsoftware.service;
 
 import com.example.testparagonsoftware.dto.RequestUserDTO;
 import com.example.testparagonsoftware.dto.ResponseUserDTO;
+import com.example.testparagonsoftware.exceptions.UserNotFoundException;
 import com.example.testparagonsoftware.mapper.UserMapper;
 import com.example.testparagonsoftware.model.User;
 import com.example.testparagonsoftware.model.UserStatusEnum;
@@ -22,7 +23,7 @@ public class UserService {
 
     public ResponseUserDTO getUserById(Integer id) {
         return userMapper.toResponseDTO(userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Not found this user!")));
+                .orElseThrow(() -> new UserNotFoundException(id)));
     }
 
 //    Как разультат POST-запроса возвращаем уникальный ID
@@ -33,7 +34,7 @@ public class UserService {
         return user.getId();
     }
 
-    public void removeUserById(Integer id) {
+    public void removeUserById(Integer id){
         userRepository.deleteById(id);
     }
 

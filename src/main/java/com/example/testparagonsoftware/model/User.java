@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -15,22 +16,22 @@ public class User {
     private Integer id;
 
     @Column(name = "email")
-//    @NotBlank
-//    @Pattern(regexp = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$", message = "должно соответствовать шаблону")
+    @NotBlank
+    @Email
     private String email;
 
     @Column(name = "name")
-//    @NotNull
-//    @Size(min = 2, max = 20)
+    @NotNull
+    @Size(min = 2, max = 20)
     private String name;
 
     @Column(name = "phone_number")
-//    @Size(min = 10, max = 12)
+    @Size(min = 10, max = 12)
     private String phoneNumber;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-//    @NotEmpty(message = "The field should not be empty")
+    @NotEmpty(message = "The field should not be empty")
     private UserStatusEnum status;
 
 }

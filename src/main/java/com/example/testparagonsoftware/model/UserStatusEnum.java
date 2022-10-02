@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public enum UserStatusEnum {
-    ONLINE(1), AWAY(30), OFFLINE(60), NONE(0);
+    ONLINE(5), AWAY(30), OFFLINE(60), NONE(0);
 
     private String name;
     private Duration duration;

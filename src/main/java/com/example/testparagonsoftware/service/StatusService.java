@@ -1,6 +1,7 @@
 package com.example.testparagonsoftware.service;
 
 import com.example.testparagonsoftware.dto.ResponseStatusDTO;
+import com.example.testparagonsoftware.exceptions.UserNotFoundException;
 import com.example.testparagonsoftware.model.User;
 import com.example.testparagonsoftware.model.UserStatusEnum;
 import com.example.testparagonsoftware.repository.UserRepository;
@@ -23,7 +24,7 @@ public class StatusService {
 
     public ResponseStatusDTO setUserStatus(Integer id, UserStatusEnum newUserStatus) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Not found this user!"));
+                .orElseThrow(() -> new UserNotFoundException(id));
 
         UserStatusEnum oldUserStatus = user.getStatus();
         user.setStatus(newUserStatus);
