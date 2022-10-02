@@ -5,6 +5,10 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ResponseDTO {
-    private Integer id;
+public class RequestUserDTO {
+
+    private String email;
+    private String name;
+    private String phoneNumber;
+
 }

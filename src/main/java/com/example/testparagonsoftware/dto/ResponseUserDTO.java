@@ -5,10 +5,10 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class RequestDTO {
+public class ResponseUserDTO {
 
     private String email;
     private String name;
     private String phoneNumber;
-
+    private String status;
 }
