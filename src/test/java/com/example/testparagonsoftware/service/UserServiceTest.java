@@ -1,8 +1,7 @@
 package com.example.testparagonsoftware.service;
 
-import com.example.testparagonsoftware.dto.RequestUserDTO;
 import com.example.testparagonsoftware.dto.ResponseUserDTO;
-import com.example.testparagonsoftware.mapper.UserMapper;
+import com.example.testparagonsoftware.exceptions.UserNotFoundException;
 import com.example.testparagonsoftware.model.User;
 import com.example.testparagonsoftware.model.UserStatusEnum;
 import com.example.testparagonsoftware.repository.UserRepository;
@@ -14,39 +13,30 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Optional;
-
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class UserServiceTest {
-
     @Autowired
     private UserService userService;
 
     @MockBean
     private UserRepository userRepository;
 
-    @MockBean
-    private UserMapper userMapper;
-    private final Integer id =1;
-
     @Test
     void getUserById() {
-        ResponseUserDTO responseUserDTO = new ResponseUserDTO();
-        when(userRepository.findById(id)).thenReturn(Optional.of(responseUserDTO));
-
-        responseUserDTO = userService.getUserById(id);
-        Assert.assertNotNull(responseUserDTO);
+        Integer id = 1;
+        ResponseUserDTO expected = ResponseUserDTO.builder().email("a").name("a").phoneNumber("1").status(UserStatusEnum.ONLINE).build();
+        User user = User.builder().email("a").name("a").phoneNumber("1").status(UserStatusEnum.ONLINE).id(id).build();
+        when(userRepository.findById(user.getId())
+                .orElseThrow(() -> new UserNotFoundException(id))).thenReturn(user);
+        ResponseUserDTO actual = userService.getUserById(id);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
     void saveUser() {
-        RequestUserDTO requestUserDTO = new RequestUserDTO();
-        Integer integer = userService.saveUser(requestUserDTO);
-        Assert.assertNotNull(integer);
     }
 
     @Test

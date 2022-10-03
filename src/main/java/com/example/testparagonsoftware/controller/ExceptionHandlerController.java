@@ -9,14 +9,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-
-
 @ControllerAdvice
 public class ExceptionHandlerController {
 
     @ExceptionHandler(value = {UserNotFoundException.class})
     public ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException ex) {
         return getResponseEntity(HttpStatus.NOT_FOUND, ex);
+    }
+
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    public ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return getResponseEntity(HttpStatus.BAD_REQUEST, ex);
     }
 
     @ExceptionHandler(value = {FieldValidationException.class})
