@@ -14,7 +14,7 @@
 "phoneNumber":"89996667814"
 }
 
-**Изменение статуса:**http://localhost:8080/user/14/status?newUserStatus=ONLINE
+**Изменение статуса:** http://localhost:8080/user/14/status?newUserStatus=ONLINE
 
 # ЗАДАНИЕ
 Задача: написать серверную часть Web-приложения согласно следующим требованиям:
