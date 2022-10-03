@@ -7,11 +7,13 @@
 3. Запросы для проверки через потсман приведу ниже
 
 **Добавление юзера (POST):** http://localhost:8080/user
+
 **Тело запроса:** {
 "email":"oleg@yandex.ru",
 "name":"Oleg",
 "phoneNumber":"89996667814"
 }
+
 **Изменение статуса:**http://localhost:8080/user/14/status?newUserStatus=ONLINE
 
 # ЗАДАНИЕ
