@@ -1,6 +1,6 @@
-package com.example.testparagonsoftware.controller;
+package com.example.testparagonsoftware.exceptions.handler;
 
-import com.example.testparagonsoftware.exceptions.ErrorResponse.ErrorResponseBody;
+import com.example.testparagonsoftware.exceptions.errorResponse.ErrorResponseBody;
 import com.example.testparagonsoftware.exceptions.FieldValidationException;
 import com.example.testparagonsoftware.exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;

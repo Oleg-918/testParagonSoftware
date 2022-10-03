@@ -1,4 +1,4 @@
-package com.example.testparagonsoftware.exceptions.ErrorResponse;
+package com.example.testparagonsoftware.exceptions.errorResponse;
 
 import lombok.Data;
 
