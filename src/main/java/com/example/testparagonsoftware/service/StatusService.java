@@ -35,7 +35,7 @@ public class StatusService {
 
     public void changeDelay(Integer id, UserStatusEnum userStatus) {
         if (userStatus.equals(UserStatusEnum.ONLINE)) {
-            Date initDelayDate = new Date(System.currentTimeMillis() + Duration.ofMinutes(1).toMillis());
+            Date initDelayDate = new Date(System.currentTimeMillis() + Duration.ofMinutes(5).toMillis());
             threadPoolTaskScheduler.schedule(changeOnline(id, userStatus), initDelayDate);
         }
     }
